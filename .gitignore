@@ -1,42 +1,64 @@
-<<<<<<< HEAD
+# Gradle files
+.gradle/
+build/
+
+# Java, Kotlin, and Android files
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+.idea/
+*.apk
+*.ap_
+*.keystore
 .DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+
+# Firebase
+google-services.json
+
+# Local configuration files (e.g., IDE and OS-specific files)
 local.properties
-=======
-# Compiled class file
-*.class
-
-# Log file
 *.log
+*.swp
+*.lock
+*.cache
+*.temp
+*.tmp
+*.bak
+*.orig
 
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
+# Miscellaneous
+*.class
 *.war
-*.nar
 *.ear
-*.zip
-*.tar.gz
-*.rar
+*.jar
+*.db
+*.sql
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
->>>>>>> 71694a87169232a22fa59a8a639b997c71246872
+# Build artifacts
+/out/
+captures/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Android Studio's file indexing
+.idea/misc.xml
+.idea/vcs.xml
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+.idea/libraries/
+
+# Code coverage
+*.ec
+
+# Generated files
+build/
+app/build/
+captured_images/
+
+# Lint and Log files
+lint/intermediates/
+lint/generated/
+lint/reports/
+*.log
