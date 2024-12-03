@@ -50,8 +50,6 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore-ktx:24.6.0")
     implementation(platform("com.google.firebase:firebase-bom:33.6.0"))
     implementation("com.google.firebase:firebase-analytics")
-    // Import the Firebase BoM
-    implementation(platform("com.google.firebase:firebase-bom:33.6.0"))
 
     // Jetpack Compose
     implementation("androidx.compose.material:material-icons-extended:1.5.1")
