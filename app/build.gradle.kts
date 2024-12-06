@@ -44,18 +44,21 @@ android {
 }
 
 dependencies {
-
     // Firebase
     implementation("com.google.firebase:firebase-auth-ktx:22.1.1")
     implementation("com.google.firebase:firebase-firestore-ktx:24.6.0")
     implementation(platform("com.google.firebase:firebase-bom:33.6.0"))
     implementation("com.google.firebase:firebase-analytics")
 
+    implementation ("com.google.firebase:firebase-auth:21.1.0")
+    implementation ("com.google.firebase:firebase-firestore:24.1.0")
+    implementation ("com.google.firebase:firebase-core:21.0.0")
+
     // Jetpack Compose
-    implementation("androidx.compose.material:material-icons-extended:1.5.1")
     implementation("androidx.compose.material3:material3:1.1.1") // Material3
     implementation("androidx.compose.ui:ui:1.5.1") // Jetpack Compose UI
     implementation("androidx.compose.material:material:1.5.1") // Material Design Components
+    implementation("androidx.compose.material:material-icons-extended:1.5.1")
     implementation("androidx.navigation:navigation-compose:2.8.4") // Navigation Compose
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1") // Lifecycle support
 

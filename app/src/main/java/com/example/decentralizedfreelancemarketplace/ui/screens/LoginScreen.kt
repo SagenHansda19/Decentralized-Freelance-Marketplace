@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
-
 package com.example.decentralizedfreelancemarketplace.ui.screens
 
 import android.widget.Toast
@@ -18,13 +16,19 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.decentralizedfreelancemarketplace.ui.navigation.Screen
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.launch
 
 @Composable
-fun LoginScreen(navController: NavController, auth: FirebaseAuth = FirebaseAuth.getInstance()) {
+fun LoginScreen(
+    navController: NavController,
+    getRole: suspend () -> String // Accept suspend function as parameter
+) {
     val context = LocalContext.current
     val email = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
     val isPasswordVisible = remember { mutableStateOf(false) }
+
+    val scope = rememberCoroutineScope() // Get the CoroutineScope
 
     Column(
         modifier = Modifier
@@ -66,11 +70,22 @@ fun LoginScreen(navController: NavController, auth: FirebaseAuth = FirebaseAuth.
 
         Button(onClick = {
             if (email.value.isNotEmpty() && password.value.isNotEmpty()) {
-                auth.signInWithEmailAndPassword(email.value, password.value)
+                FirebaseAuth.getInstance().signInWithEmailAndPassword(email.value, password.value)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show()
-                            navController.navigate(Screen.Home.route)
+                            // Launch coroutine to get role
+                            scope.launch {
+                                val userRole = getRole()
+
+                                // Navigate based on the user role
+                                when (userRole) {
+                                    "buyer" -> navController.navigate(Screen.Home.route)
+                                    "freelancer" -> navController.navigate(Screen.Home.route)
+                                    else -> navController.navigate(Screen.Home.route)
+                                }
+
+                                Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show()
+                            }
                         } else {
                             Toast.makeText(context, "Login Failed: ${task.exception?.message}", Toast.LENGTH_LONG).show()
                         }
